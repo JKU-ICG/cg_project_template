@@ -2,7 +2,7 @@
 Submission template for the CG lab project at the Johannes Kepler University, Linz.
 
 **Explanation:**
-This readme needs to be submitted via Github for every the 3 delivery dates (see due date in the headings).
+This readme needs to be submitted via Github for the 3 delivery dates (see due date in the headings).
 For every submission change/extend the corresponding sections by replacing ~~strike through~~ text.
 *In order to meet the deadlines make sure you push everything on your Github repository.*
 For more details also see: [www.cg.jku.at/teaching/computergraphics/lab](www.cg.jku.at/teaching/computergraphics/lab)
@@ -14,10 +14,10 @@ For more details also see: [www.cg.jku.at/teaching/computergraphics/lab](www.cg.
 
 **Students:**
 
-| ID     | Firstname       | Lastname   | Immatriculation Number |
-| -------|-------------|------------|------------|
+| ID     | Firstname   | Lastname       | Immatriculation Number |
+| -------|-------------|----------------|----------------|
 | 1      | ~~Max~~     | ~~Mustermann~~ | ~~123456789~~  |
-| 2      | ~~Jane~~    | ~~Doe~~    | ~~987654321~~  |
+| 2      | ~~Jane~~    | ~~Doe~~        | ~~987654321~~  |
 
 **Concept:** (Explain the basic outline of your movie: i.e., planned scenes, what happens, which objects are used, ... )
 > ~~One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.~~
@@ -39,7 +39,7 @@ For more details also see: [www.cg.jku.at/teaching/computergraphics/lab](www.cg.
 
 ---
 
-# Intermediate submission (due 28.04.2019)
+# Intermediate submission (due: 28.04.2019)
 Prepare a first version of your movie that:
 
 - is 30 seconds long,
@@ -60,10 +60,12 @@ We will inspect your intermediate movie in the 5th LAB (29th April to 3rd May), 
 | 1      | ~~80~~    |
 | 2      | ~~50~~    |
 
-**Basic movie effects:**
+**Working Effects:**
 
 | Done  | ID | Name                    | Issues | Points |
 |-------|----|-------------------------|--------|--------|
-| ~~x~~ | 1a | Scene graph elements    | blabla | ??     |
+| ~~x~~ | 1a | Scene graph elements    |        | ??     |
 
+**Documentation:**
+~~Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.~~
 
