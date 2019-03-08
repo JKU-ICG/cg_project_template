@@ -43,7 +43,7 @@ For more details also see: [www.cg.jku.at/teaching/computergraphics/lab](www.cg.
 Prepare a first version of your movie that:
 
 - is 30 seconds long,
-- has 3 scenes with objects, animations, and camera movement, and
+- has objects, animations, and camera movement, and
 - runs on the pool computers. 
 
 We will inspect your intermediate movie in the 5th LAB (29th April to 3rd May), so make sure it is opened in the browser and runs when the lecturers/tutors looks at your project.
@@ -52,6 +52,11 @@ We will inspect your intermediate movie in the 5th LAB (29th April to 3rd May), 
 ---
 
 # Final Hand-in (due: 19.06.2019)
+The final package needs to contain:
+- code/		Documented code + required resources + libs
+- video/	A screen recording of the movie
+- README	Document which minimal aspects/requirements, basic movie parts and your special effects are implemented in a correct way (effects are working and implemented correctly by yourself). Comment issues!
+
 
 **Workload:**
 
@@ -65,6 +70,9 @@ We will inspect your intermediate movie in the 5th LAB (29th April to 3rd May), 
 | Done  | ID | Name                    | Issues | Points |
 |-------|----|-------------------------|--------|--------|
 | ~~x~~ | 1a | Scene graph elements    |        | ??     |
+| ~~x~~ | S1 | Terrain from heightmap  |        | 10 |
+| ~~x~~ | S2 | Multi texturing         |        | 10 |
+| ~~x~~ | S3 | Postprocessing shader   |        | 10 |
 
 **Documentation:**
 ~~Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.~~
