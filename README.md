@@ -53,4 +53,17 @@ We will inspect your intermediate movie in the 5th LAB (29th April to 3rd May), 
 
 # Final Hand-in (due: 19.06.2019)
 
+**Workload:**
+
+| ID     | Workload (in percent) |
+| -------|-----------|
+| 1      | ~~80~~    |
+| 2      | ~~50~~    |
+
+**Basic movie effects:**
+
+| Done  | ID | Name                    | Issues | Points |
+|-------|----|-------------------------|--------|--------|
+| ~~x~~ | 1a | Scene graph elements    | blabla | ??     |
+
 
