@@ -25,7 +25,7 @@ In order to meet the deadlines make sure you push everything on your Github repo
 > ~~One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.~~
 
 **Special Effects:**
-All special effects must add up to exactly 30 points!
+Selected special effects must add up to exactly 30 points!
 
 | Selected | ID | Name | Points |
 |----------|----|---|---|
@@ -42,4 +42,17 @@ All special effects must add up to exactly 30 points!
 
 
 ---
+
+# Intermediate submission (due 28.04.2019)
+Prepare a first version of your movie that:
+- is 30 seconds long,
+- has 3 scenes with objects, animations, and camera movement, and
+- runs on the pool computers. 
+We will inspect your intermediate movie in the 5th LAB (29th April to 3rd May), so make sure it is opened in the browser and runs when the lecturers/tutors looks at your project.
+*Note: You don’t need to use any lighting, materials, or textures yet. This will be discussed in later labs and should be added to the project afterwards!*
+
+---
+
+# Final Hand-in (due: 29.03.2019)
+
 
