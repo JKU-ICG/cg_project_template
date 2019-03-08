@@ -1,13 +1,11 @@
 # CG Lab Project SS2019
 Submission template for the CG lab project at the Johannes Kepler University, Linz.
-## Explanation
-Fill in the sections that are marked by ~~strike through~~.
-For details see: [www.cg.jku.at/teaching/computergraphics/lab](www.cg.jku.at/teaching/computergraphics/lab)
-## Deadlines
-- 29.03.2019: Announce team members and movie concept
-- 28.04.2019: Intermediate submission (optional, +10%)
-- 19.06.2019: Hand-in final package 
-In order to meet the deadlines make sure you push everything on your Github repository. 
+
+** Explanation: **
+This readme needs to be submitted via Github for every the 3 delivery dates (see due date in the headings).
+For every submission change/extend the corresponding sections by replacing ~~strike through~~ text.
+*In order to meet the deadlines make sure you push everything on your Github repository.*
+For more details also see: [www.cg.jku.at/teaching/computergraphics/lab](www.cg.jku.at/teaching/computergraphics/lab)
 
 ---
 
@@ -45,14 +43,16 @@ Selected special effects must add up to exactly 30 points!
 
 # Intermediate submission (due 28.04.2019)
 Prepare a first version of your movie that:
+
 - is 30 seconds long,
 - has 3 scenes with objects, animations, and camera movement, and
 - runs on the pool computers. 
+
 We will inspect your intermediate movie in the 5th LAB (29th April to 3rd May), so make sure it is opened in the browser and runs when the lecturers/tutors looks at your project.
 *Note: You don’t need to use any lighting, materials, or textures yet. This will be discussed in later labs and should be added to the project afterwards!*
 
 ---
 
-# Final Hand-in (due: 29.03.2019)
+# Final Hand-in (due: 19.06.2019)
 
 
