@@ -2,7 +2,7 @@
 Submission template for the CG lab project at the Johannes Kepler University, Linz.
 
 **Explanation:**
-This readme needs to be submitted via Github for the 3 delivery dates (see due date in the headings).
+This `README.md` needs to be submitted via Github for the 3 delivery dates (see due date in the headings).
 For every submission change/extend the corresponding sections by replacing ~~strike through~~ text.
 *In order to meet the deadlines make sure you push everything on your Github repository.*
 For more details also see: [www.cg.jku.at/teaching/computergraphics/lab](www.cg.jku.at/teaching/computergraphics/lab)
@@ -53,9 +53,9 @@ We will inspect your intermediate movie in the 5th LAB (29th April to 3rd May), 
 
 # Final Hand-in (due: 19.06.2019)
 The final package needs to contain:
-- code/		Documented code + required resources + libs
-- video/	A screen recording of the movie
-- README	Document which minimal aspects/requirements, basic movie parts and your special effects are implemented in a correct way (effects are working and implemented correctly by yourself). Comment issues!
+- `code/`:		Documented code + required resources + libs
+- `video/`:	A screen recording of the movie
+- `README.md`:	Extend the file and document the workload of each team member, and which effects (minimal, basic, special) are implemented (effects are working and implemented by yourself). Comment issues!
 
 
 **Workload:**
@@ -75,5 +75,6 @@ The final package needs to contain:
 | ~~x~~ | S3 | Postprocessing shader   |        | 10 |
 
 **Documentation:**
+
 ~~Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.~~
 
