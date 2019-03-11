@@ -5,7 +5,7 @@ Submission template for the CG lab project at the Johannes Kepler University, Li
 This `README.md` needs to be submitted via Github for the 3 delivery dates (see due date in the headings).
 For every submission change/extend the corresponding sections by replacing ~~strike through~~ text.
 *In order to meet the deadlines make sure you push everything on your Github repository.*
-For more details also see: [www.cg.jku.at/teaching/computergraphics/lab](www.cg.jku.at/teaching/computergraphics/lab)
+For more details also see: [www.cg.jku.at/teaching/computergraphics/lab](https://www.cg.jku.at/teaching/computergraphics/lab)
 
 ---
 
