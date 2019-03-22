@@ -7,7 +7,6 @@ For every submission change/extend the corresponding sections by replacing the T
 *In order to meet the deadlines make sure you push everything to your Github repository.*
 For more details see the [full specification document in the Google Drive folder](https://www.cg.jku.at/teaching/computergraphics/lab)
 
----
 
 # Concept submission due on 29.03.2019
 
