@@ -67,7 +67,7 @@ Push your code. Nothing to change here in README file.
 | [yes/no] | 3b | One light source should be moving in the scene.                                                        | 3           |                 |
 | [yes/no] | 3c | Implement at least one spot-light.                                                                     | 7           |                 |
 | [yes/no] | 3d | Apply Phong shading to all objects in the scene.                                                       | 3           |                 |
-| [yes/no] | 4a | Use the WASD-keys to manually control the camera along the viewing direction                           | 6           |                 |
+| [yes/no] | 4a | Use the WASD-keys to manually control the camera along the viewing direction.                          | 6           |                 |
 | [yes/no] | 4b | Use the mouse to control the heading and pitch of the camera relative to the ground.                   | 3           |                 |
 | [yes/no] | 5a | Need to start automatically.                                                                           | 2           |                 |
 | [yes/no] | 5b | Need to be framerate-independent.                                                                      | 3           |                 |
