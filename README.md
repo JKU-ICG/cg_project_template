@@ -40,12 +40,10 @@ TODO
 | yes/no   | S9 | Motion blur                           | 30     |
 | yes/no   | SO | Own suggestion (preapproved by email) | TODO   |
 
----
 
 # Intermediate submission due on 28.04.2019
 Push your code. Nothing to change here in README file.
 
----
 
 # Final submission due on 19.06.2019
 
