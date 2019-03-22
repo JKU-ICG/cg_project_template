@@ -1,80 +1,68 @@
 # CG Lab Project SS2019
-Submission template for the CG lab project at the Johannes Kepler University, Linz.
+Submission template for the CG lab project at the Johannes Kepler University Linz.
 
 **Explanation:**
-This `README.md` needs to be submitted via Github for the 3 delivery dates (see due date in the headings).
-For every submission change/extend the corresponding sections by replacing ~~strike through~~ text.
-*In order to meet the deadlines make sure you push everything on your Github repository.*
-For more details also see: [www.cg.jku.at/teaching/computergraphics/lab](https://www.cg.jku.at/teaching/computergraphics/lab)
+This `README.md` needs to be pushed to Github for each of the 3 delivery dates.
+For every submission change/extend the corresponding sections by replacing the TODO markers.
+*In order to meet the deadlines make sure you push everything to your Github repository.*
+For more details see the [full specification document in the Google Drive folder](https://www.cg.jku.at/teaching/computergraphics/lab)
 
 ---
 
-# Team, Concept, and Special Effects (due: 29.03.2019)
-**Movie Name: ~~The best CG Movie ever made~~**
+# Concept submission due on 29.03.2019
 
-**Students:**
+**Movie Name** 
+TODO
 
-| ID     | Firstname   | Lastname       | Immatriculation Number |
-| -------|-------------|----------------|----------------|
-| 1      | ~~Max~~     | ~~Mustermann~~ | ~~123456789~~  |
-| 2      | ~~Jane~~    | ~~Doe~~        | ~~987654321~~  |
+**Students**
 
-**Concept:** (Explain the basic outline of your movie: i.e., planned scenes, what happens, which objects are used, ... )
-> ~~One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.~~
+| Student ID | First Name  | Last Name      |
+| -----------|-------------|----------------|
+| TODO       | TODO        | TODO           |
+| TODO       | TODO        | TODO           |
 
-**Special Effects:** (Selected special effects must add up to exactly 30 points!)
+**Concept** (Explain the basic story of your movie, i.e., planned scenes, what happens, which objects are used, etc.)
+TODO
 
-| Selected | ID | Name                    | Points |
-|----------|----|-------------------------|--------|
-| ~~x~~    | S1 | Terrain from heightmap  | 10 |
-| ~~x~~    | S2 | Multi texturing         | 10 |
-| ~~x~~    | S3 | Postprocessing shader   | 10 |
-|          | S4 | Level of detail         | 10 |
-|          | S5 | Billboarding            | 10 |
-|          | S6 | Animated water surface  | 20 |
-|          | S7 | Minimap                 | 20 |
-|          | S8 | Particle system (e.g., rain, smoke, fire) | 20 |
-|          | S9 | Motion blur             | 20 |
-|          | SO | Own suggestion (will be approved by mail) | 10 |
+**Special Effects** (Selected special effects must add up to exactly 30 points)
 
----
-
-# Intermediate submission (due: 28.04.2019)
-Prepare a first version of your movie that:
-
-- is 30 seconds long,
-- has objects, animations, and camera movement, and
-- runs on the pool computers. 
-
-We will inspect your intermediate movie in the 5th LAB (29th April to 3rd May), so make sure it is opened in the browser and runs when the lecturers/tutors looks at your project.
-*Note: You don’t need to use any lighting, materials, or textures yet. This will be discussed in later labs and should be added to the project afterwards!*
+| Selected | ID | Name                                  | Points |
+|----------|----|---------------------------------------|--------|
+| yes/no   | S1 | Multi texturing                       | 10     |  
+| yes/no   | S2 | Level of detail                       | 10     |
+| yes/no   | S3 | Billboarding                          | 10     |
+| yes/no   | S4 | Terrain from heightmap                | 20     |
+| yes/no   | S5 | Postprocessing shader                 | 20     |
+| yes/no   | S6 | Animated water surface                | 20     |
+| yes/no   | S7 | Minimap                               | 20     |
+| yes/no   | S8 | Particle system (rain, smoke, fire)   | 20     |
+| yes/no   | S9 | Motion blur                           | 30     |
+| yes/no   | SO | Own suggestion (preapproved by email) | TODO   |
 
 ---
 
-# Final Hand-in (due: 19.06.2019)
-The final package needs to contain:
-- `code/`:		Documented code + required resources + libs
-- `video/`:	A screen recording of the movie
-- `README.md`:	Extend the file and document the workload of each team member, and which effects (minimal, basic, special) are implemented (effects are working and implemented by yourself). Comment issues!
+# Intermediate submission due on 28.04.2019
+
+---
+
+# Final submission due on 19.06.2019
 
 
-**Workload:**
+**Workload**
 
-| ID     | Workload (in percent) |
-| -------|-----------|
-| 1      | ~~80~~    |
-| 2      | ~~50~~    |
+| Student ID     | Workload (in %) |
+| ---------------|-----------------|
+| TODO           | TODO            |
+| TODO           | TODO            |
 
-**Working Effects:**
+**Effects**
 
 | Done  | ID | Name                    | Issues | Points |
 |-------|----|-------------------------|--------|--------|
-| ~~x~~ | 1a | Scene graph elements    |        | ??     |
-| ~~x~~ | S1 | Terrain from heightmap  |        | 10 |
-| ~~x~~ | S2 | Multi texturing         |        | 10 |
-| ~~x~~ | S3 | Postprocessing shader   |        | 10 |
+| yes/no | 1a | Scene graph elements   |        | ??     |
 
-**Documentation:**
+**Special Effect Description** (Describe how they work in principle and how you implemented them.)
+TODO
 
-~~Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.~~
+
 
