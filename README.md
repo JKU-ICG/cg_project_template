@@ -56,9 +56,25 @@ Push your code. Nothing to change here in README file.
 
 **Effects**
 
-| Done     | ID | Name                    | Issues | Points |
-|----------|----|-------------------------|--------|--------|
-| [yes/no] | 1a | Scene graph elements    |        | ??     |
+| Done     | ID | Name                                                                                                   | Max. Points | Issues/Comments |
+|----------|----|--------------------------------------------------------------------------------------------------------|-------------|-----------------|
+| [yes/no] | 1a | Add at least one manually composed object that consists of multiple scene graph nodes.                 | 6           |                 |
+| [yes/no] | 1b | Animate separate parts of the object and also move the composed object itself in the scene.            | 4           |                 |
+| [yes/no] | 1c | Use at least two clearly different materials for the composed object.                                  | 3           |                 |
+| [yes/no] | 2a | Create one scene graph node that renders a complex 3D shape. Fully specify properties for this object. | 7           |                 |
+| [yes/no] | 2b | Apply a texture to your self-created complex object by setting proper texture coordinates.             | 3           |                 |
+| [yes/no] | 3a | Use multiple light sources.                                                                            | 5           |                 |
+| [yes/no] | 3b | One light source should be moving in the scene.                                                        | 3           |                 |
+| [yes/no] | 3c | Implement at least one spot-light.                                                                     | 7           |                 |
+| [yes/no] | 3d | Apply Phong shading to all objects in the scene.                                                       | 3           |                 |
+| [yes/no] | 4a | Use the WASD-keys to manually control the camera along the viewing direction                           | 6           |                 |
+| [yes/no] | 4b | Use the mouse to control the heading and pitch of the camera relative to the ground.                   | 3           |                 |
+| [yes/no] | 5a | Need to start automatically.                                                                           | 2           |                 |
+| [yes/no] | 5b | Need to be framerate-independent.                                                                      | 3           |                 |
+| [yes/no] | 5c | The camera needs to be animated without user intervention.                                             | 5           |                 |
+| [yes/no] | S1 | Two or three special effects correctly implemented.                                                    | 30          |                 |
+| [yes/no] | S2 | Well integrated (effects look nice and not out of place, given the rest of the movie).                 | 10          |                 |
+
 
 **Special Effect Description** (Describe how they work in principle and how you implemented them.)
 
