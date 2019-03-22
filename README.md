@@ -11,7 +11,7 @@ For more details see the [full specification document in the Google Drive folder
 
 # Concept submission due on 29.03.2019
 
-**Movie Name** 
+**Movie Name:** 
 TODO
 
 **Students**
