@@ -26,18 +26,18 @@ TODO
 
 **Special Effects** (Selected special effects must add up to exactly 30 points)
 
-| Selected | ID | Name                                  | Points |
-|----------|----|---------------------------------------|--------|
-| yes/no   | S1 | Multi texturing                       | 10     |  
-| yes/no   | S2 | Level of detail                       | 10     |
-| yes/no   | S3 | Billboarding                          | 10     |
-| yes/no   | S4 | Terrain from heightmap                | 20     |
-| yes/no   | S5 | Postprocessing shader                 | 20     |
-| yes/no   | S6 | Animated water surface                | 20     |
-| yes/no   | S7 | Minimap                               | 20     |
-| yes/no   | S8 | Particle system (rain, smoke, fire)   | 20     |
-| yes/no   | S9 | Motion blur                           | 30     |
-| yes/no   | SO | Own suggestion (preapproved by email) | TODO   |
+| Selected   | ID | Name                                  | Points |
+|------------|----|---------------------------------------|--------|
+| [yes/no]   | S1 | Multi texturing                       | 10     |  
+| [yes/no]   | S2 | Level of detail                       | 10     |
+| [yes/no]   | S3 | Billboarding                          | 10     |
+| [yes/no]   | S4 | Terrain from heightmap                | 20     |
+| [yes/no]   | S5 | Postprocessing shader                 | 20     |
+| [yes/no]   | S6 | Animated water surface                | 20     |
+| [yes/no]   | S7 | Minimap                               | 20     |
+| [yes/no]   | S8 | Particle system (rain, smoke, fire)   | 20     |
+| [yes/no]   | S9 | Motion blur                           | 30     |
+| [yes/no]   | SO | Own suggestion (preapproved by email) | TODO   |
 
 
 # Intermediate submission due on 28.04.2019
@@ -56,9 +56,9 @@ Push your code. Nothing to change here in README file.
 
 **Effects**
 
-| Done   | ID | Name                    | Issues | Points |
-|--------|----|-------------------------|--------|--------|
-| yes/no | 1a | Scene graph elements    |        | ??     |
+| Done     | ID | Name                    | Issues | Points |
+|----------|----|-------------------------|--------|--------|
+| [yes/no] | 1a | Scene graph elements    |        | ??     |
 
 **Special Effect Description** (Describe how they work in principle and how you implemented them.)
 
