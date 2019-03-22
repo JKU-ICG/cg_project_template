@@ -14,9 +14,9 @@ For more details see the [full specification document in the Google Drive folder
 **Movie Name:** 
 TODO
 
-**Students**
+**Group Members**
 
-| Group Members | First Name  | Last Name      |
+| Student ID    | First Name  | Last Name      |
 | --------------|-------------|----------------|
 | TODO          | TODO        | TODO           |
 | TODO          | TODO        | TODO           |
