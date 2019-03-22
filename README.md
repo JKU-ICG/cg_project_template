@@ -16,10 +16,10 @@ TODO
 
 **Students**
 
-| Student ID | First Name  | Last Name      |
-| -----------|-------------|----------------|
-| TODO       | TODO        | TODO           |
-| TODO       | TODO        | TODO           |
+| Group Members | First Name  | Last Name      |
+| --------------|-------------|----------------|
+| TODO          | TODO        | TODO           |
+| TODO          | TODO        | TODO           |
 
 **Concept** (Explain the basic story of your movie, i.e., planned scenes, what happens, which objects are used, etc.)
 
@@ -59,9 +59,9 @@ Push your code. Nothing to change here in README file.
 
 **Effects**
 
-| Done  | ID | Name                    | Issues | Points |
-|-------|----|-------------------------|--------|--------|
-| yes/no | 1a | Scene graph elements   |        | ??     |
+| Done   | ID | Name                    | Issues | Points |
+|--------|----|-------------------------|--------|--------|
+| yes/no | 1a | Scene graph elements    |        | ??     |
 
 **Special Effect Description** (Describe how they work in principle and how you implemented them.)
 
