@@ -72,7 +72,9 @@ Push your code. Nothing to change here in `README` file.
 | [yes/no] | 5a | Animations start automatically.                                                                        | 2           |                 |
 | [yes/no] | 5b | Animations are framerate-independent.                                                                  | 3           |                 |
 | [yes/no] | 5c | The camera is animated without user intervention.                                                      | 5           |                 |
-| [yes/no] | S1 | Two or three special effects correctly implemented.                                                    | 30          |                 |
+| [yes/no] | S[TODO] | Correctly implemented special effect: [TODO].                                                     | [TODO]      |                 |
+| [yes/no] | S[TODO] | Correctly implemented special effect: [TODO].                                                     | [TODO]      |                 |
+| [yes/no] | SE | Special effects are nicely integrated and well documented                                              | 10          |                 |
 
 
 **Special Effect Description** (Describe how they work in principle and how you implemented them.)
