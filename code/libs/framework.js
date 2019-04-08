@@ -116,8 +116,8 @@ function createContext(width, height) {
   canvas.width = width || 400;
   canvas.height = height || 400;
   document.body.appendChild(canvas);
-  createHtmlText(canvas)
-  return canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  createHtmlText(canvas);
+  return canvas.getContext('webgl', { premultipliedAlpha: false, alpha: false } );
 }
 
 /**
@@ -663,6 +663,12 @@ class TransformationSGNode extends SGNode {
     super.render(context);
     //restore backup
     context.sceneMatrix = previous;
+  }
+
+  // For consistency with labs:
+  // using .matrix= instead of setMatrix also works!
+  setMatrix(matrix) {
+     this.matrix = matrix;
   }
 }
 
