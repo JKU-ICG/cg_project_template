@@ -1,14 +1,14 @@
-# CG Lab Project SS2019
+# CG Lab Project SS2020
 Submission template for the CG lab project at the Johannes Kepler University Linz.
 
 **Explanation:**
 This `README.md` needs to be pushed to Github for each of the 3 delivery dates.
 For every submission change/extend the corresponding sections by replacing the [TODO] markers.
 *In order to meet the deadlines make sure you push everything to your Github repository.*
-For more details see the [full specification document in the Google Drive folder](https://www.cg.jku.at/teaching/computergraphics/lab)
+For more details see the [Moodle page](https://moodle.jku.at/jku/course/view.php?id=8501)
 
 
-# Concept submission due on 29.03.2019
+# Concept submission due on 27.03.2020
 
 **Movie Name:** 
 [TODO]
@@ -40,11 +40,11 @@ For more details see the [full specification document in the Google Drive folder
 | [yes/no]   | SO | Own suggestion (preapproved by email) | [TODO] |
 
 
-# Intermediate submission due on 28.04.2019
+# Intermediate submission due on 24.04.2020
 Push your code. Nothing to change here in `README` file.
 
 
-# Final submission due on 19.06.2019
+# Final submission due on 23.06.2020
 
 
 **Workload**
