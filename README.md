@@ -25,6 +25,7 @@ TODO
 ### Concept
 
 TODO
+
 (Explain the basic story of your movie, i.e., planned scenes, what happens, which objects are used, etc.)
 
 ### Special Effects
