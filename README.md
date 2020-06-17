@@ -77,7 +77,11 @@ The repository needs to contain:
 | TODO           | TODO            |
 | TODO           | TODO            |
 
+Workload has to sum up to 100%.
+
 ### Effects
+
+Mention in the comments column of the table where you have implemented the code and where it is visible (e.g., spotlight is the lamp post shining on the street).
 
 | Implemented    | ID | Name                                                                                                   | Max. Points | Issues/Comments |
 |----------------|----|--------------------------------------------------------------------------------------------------------|-------------|-----------------|
