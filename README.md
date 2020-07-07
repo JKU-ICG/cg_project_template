@@ -107,4 +107,4 @@ Mention in the comments column of the table where you have implemented the code 
 
 TODO
 
-(Describe how they work in principle and how you implemented them.)
+Describe how the effects work in principle and how you implemented them. If your effect does not work but you tried to implement it, make sure that you explain this. Even if your code is broken do not delete it (e.g., keep it as a comment). If you describe the effect (how it works, and how to implement it in theory), then you will also get some points. If you remove the code and do not explain it in the README this will lead to 0 points for the effect and the integration SE.
