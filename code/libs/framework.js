@@ -434,22 +434,16 @@ function parseObjFile(objectData) {
       becomes:
         ['16/92/11', '14/101/22', '1/69/1'];
       */
-      var quad = false;
       for (var j = 0, eleLen = elements.length; j < eleLen; j++){
-          // Triangulating quads
-          // quad: 'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2 v3/t3/vn3/'
+          // Triangulating polygons
+          // Triangles are generated in a "fan"-shaped pattern for 
+          // polygons with more than 3 corners.
+          // polygon: 'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2 v3/t3/vn3/ v4/t4/vn4/'
           // corresponding triangles:
           //      'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2'
-          //      'f v2/t2/vn2 v3/t3/vn3 v0/t0/vn0'
-          if(j === 3 && !quad) {
-              // add v2/t2/vn2 in again before continuing to 3
-              j = 2;
-              quad = true;
-          }
-          if(elements[j] in unpacked.hashindices){
-              unpacked.indices.push(unpacked.hashindices[elements[j]]);
-          }
-          else{
+          //      'f v0/t0/vn0 v2/t2/vn2 v3/t3/vn3'
+          //      'f v0/t0/vn0 v3/t3/vn3 v4/t4/vn4'
+          if(!(elements[j] in unpacked.hashindices)){
               /*
               Each element of the face line array is a vertex which has its
               attributes delimited by a forward slash. This will separate
@@ -495,13 +489,13 @@ function parseObjFile(objectData) {
               unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 2]);
               // add the newly created vertex to the list of indices
               unpacked.hashindices[elements[j]] = unpacked.index;
-              unpacked.indices.push(unpacked.index);
               // increment the counter
               unpacked.index += 1;
           }
-          if(j === 3 && quad) {
-              // add v0/t0/vn0 onto the second triangle
-              unpacked.indices.push( unpacked.hashindices[elements[0]]);
+          if (j > 1) {
+              unpacked.indices.push(unpacked.hashindices[elements[0]]);
+              unpacked.indices.push(unpacked.hashindices[elements[j-1]]);
+              unpacked.indices.push(unpacked.hashindices[elements[j]]);
           }
       }
     }
