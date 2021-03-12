@@ -9,7 +9,7 @@ For every submission change/extend the corresponding sections by replacing the *
 *In order to meet the deadlines make sure you push everything to your Github repository.*
 For more details see the Moodle page.
 
-## Concept submission due on DD.MM.YYY
+## Concept submission due on 26.03.2021
 
 ### Movie Name
 
@@ -45,7 +45,7 @@ Selected special effects must add up to exactly 30 points:
 | yes/no     | S9 | Motion blur                           | 30     |
 | yes/no     | SO | Own suggestion (preapproved by email) | TODO   |
 
-## Intermediate submission due on DD.MM.YYY
+## Intermediate submission due on 23.04.2021
 
 Prepare a first version of your movie that:
  * is 30 seconds long,
@@ -62,7 +62,7 @@ Nothing to change here in `README` file.
 
 **Note:** You don’t need to use any lighting, materials, or textures yet. This will be discussed in later labs and can be added to the project afterwards!
 
-## Final submission due on DD.MM.YYY
+## Final submission due on 22.06.2021
 
 The repository needs to contain:
   * code/ Documented code + resources + libs
