@@ -999,6 +999,147 @@ class LightSGNode extends TransformationSGNode {
 }
 
 /**
+ * Implementation of a manually controlled camera.
+ * 
+ * Movement scheme:
+ * Click & drag to rotate the camera
+ * W,A,S,D - Movement forward/left/backward/right
+ * Q,E - Movement down/up
+ * All movement is relative to the current viewing direction of the camera.
+ */
+ class UserControlledCamera {
+  constructor(canvas, position) {
+    //Camera movement speed in 1000 m/s
+    this.moveSpeed = 0.05;
+    //Encapsulates camera fields for easier passing to functions
+    this.control = {
+      //Enables/disables manual control of the camera
+      enabled: true,
+      //Mouse Sensitivity for left/right
+      xSensitivity: 0.1,
+      //Mouse Sensitivity for up/down
+      ySensitivity: 0.1,
+      //Direction the camera is currently looking (angles in degrees)
+      lookingDir: {x: 0, y: 0},
+      //Absolute position of the camera in world space
+      position: position||vec3.create(),
+      //Keys that are currently pressed
+      keysPressed: {w: false, a: false, s: false, d: false, q: false, e: false},
+      //Enables/disables rotation of the camera with the mouse
+      mouseEnabled: false,
+      //Most recent position of the mouse on screen
+      mousePos: {x : -1, y : -1}
+    };
+    this.matrix = mat4.create();
+
+    this.initInteraction(this.control, canvas);
+    this.update(0);
+  }
+
+  initInteraction(control, canvas) {
+    function toPos(event) {
+      //convert to local coordinates
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+      };
+    }
+
+    //Mouse interactions
+    window.addEventListener('mousedown', function(event) {
+      control.mouseEnabled = true;
+      control.mousePos = toPos(event);
+    });
+
+    window.addEventListener('mouseup', function(event) {
+      control.mouseEnabled = false;
+    });
+
+    canvas.addEventListener('mousemove', function(event) {
+      if (control.enabled && control.mouseEnabled) {
+        const pos = toPos(event);
+        const delta = { x : (control.mousePos.x - pos.x) * control.xSensitivity, y: (control.mousePos.y - pos.y) * control.ySensitivity};
+        control.mousePos = pos;
+
+        //Change left/right angle (clamp to (-360, 360) to prevent potential overflow glitches)
+        control.lookingDir.x += delta.x;
+        if (control.lookingDir.x < -360 || control.lookingDir.x > 360)
+          control.lookingDir.x %= 360;
+        //Change up/down angle (clamp to (-89.9, 89.9) degree to prevente bugs at +/- 90 degrees)
+        control.lookingDir.y += delta.y;
+        control.lookingDir.y = Math.min(Math.max(-89.9, control.lookingDir.y), 89.9);
+      }
+    });
+  
+    //Keyboard interactions
+    document.addEventListener('keydown', function(event) {
+      if (control.enabled) {
+        if (event.code === 'KeyW') 
+        control.keysPressed.w = true;
+        if (event.code === 'KeyA') 
+        control.keysPressed.a = true;
+        if (event.code === 'KeyS') 
+        control.keysPressed.s = true;
+        if (event.code === 'KeyD') 
+        control.keysPressed.d = true;
+        if (event.code === 'KeyQ') 
+        control.keysPressed.q = true;
+        if (event.code === 'KeyE') 
+        control.keysPressed.e = true;
+      }
+    });
+    document.addEventListener('keyup', function(event) {
+      if (control.enabled) {
+        if (event.code === 'KeyW') 
+        control.keysPressed.w = false;
+        if (event.code === 'KeyA') 
+        control.keysPressed.a = false;
+        if (event.code === 'KeyS') 
+        control.keysPressed.s = false;
+        if (event.code === 'KeyD') 
+        control.keysPressed.d = false;
+        if (event.code === 'KeyQ') 
+        control.keysPressed.q = false;
+        if (event.code === 'KeyE') 
+        control.keysPressed.e = false;
+      }
+    });
+  }
+
+  /**
+   * Use update(deltaTime) to update the camera position.
+   */
+  update(deltaTimeInMilliseconds) {
+    if (this.control.enabled) {
+      //Generate matrix from view angles
+      var rotMatrix = mat4.rotateX(mat4.create(), mat4.rotateY(mat4.create(), mat4.identity(mat4.create()), glMatrix.toRadian(this.control.lookingDir.x)), -glMatrix.toRadian(this.control.lookingDir.y));
+      //Generate movement vector
+      var xMove = this.control.keysPressed.a ? 1 : 0 + this.control.keysPressed.d ? -1 : 0;
+      var yMove = this.control.keysPressed.e ? 1 : 0 + this.control.keysPressed.q ? -1 : 0;
+      var zMove = this.control.keysPressed.w ? 1 : 0 + this.control.keysPressed.s ? -1 : 0;
+      var movement = vec3.scale(vec3.create(), vec3.normalize(vec3.create(), vec3.transformMat4(vec3.create(), vec3.fromValues(xMove, yMove, zMove), rotMatrix)), this.moveSpeed * deltaTimeInMilliseconds);
+      //Move the camera
+      this.control.position = vec3.add(vec3.create(), this.control.position, movement);
+      //Generae the lookAt centerpoint
+      var center = vec3.add(vec3.create(), vec3.transformMat4(vec3.create(), vec3.fromValues(0, 0, 1), rotMatrix), this.control.position);
+      //And finally generate our lookAt matrix
+      cameraPos = this.control.position;
+      cameraCenter = center;
+      this.matrix = mat4.lookAt(mat4.create(), this.control.position, center, [0,1,0]);
+    }
+  }
+
+  /**
+   * Use render(context) to apply the camera to the context.
+   * @param {ISGContext} context The rendering context
+   */
+  render(context) {
+    context.viewMatrix = this.matrix;
+  }
+}
+
+/**
  * returns a new rendering context
  * @param gl the gl context
  * @param projectionMatrix optional projection Matrix
