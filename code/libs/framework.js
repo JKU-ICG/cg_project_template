@@ -1016,15 +1016,15 @@ class LightSGNode extends TransformationSGNode {
       //Enables/disables manual control of the camera
       enabled: true,
       //Mouse Sensitivity for left/right
-      xSensitivity: 0.1,
+      xSensitivity: 0.15,
       //Mouse Sensitivity for up/down
-      ySensitivity: 0.1,
+      ySensitivity: 0.15,
       //Direction the camera is currently looking (angles in degrees)
       lookingDir: {x: 0, y: 0},
       //Absolute position of the camera in world space
       position: position||vec3.create(),
       //Keys that are currently pressed
-      keysPressed: {w: false, a: false, s: false, d: false, q: false, e: false},
+      keysPressed: new Map([['KeyW', false], ['KeyA', false], ['KeyS', false], ['KeyD', false], ['KeyQ', false], ['KeyE', false]]),
       //Enables/disables rotation of the camera with the mouse
       mouseEnabled: false,
       //Most recent position of the mouse on screen
@@ -1075,34 +1075,12 @@ class LightSGNode extends TransformationSGNode {
     //Keyboard interactions
     document.addEventListener('keydown', function(event) {
       if (control.enabled) {
-        if (event.code === 'KeyW') 
-        control.keysPressed.w = true;
-        if (event.code === 'KeyA') 
-        control.keysPressed.a = true;
-        if (event.code === 'KeyS') 
-        control.keysPressed.s = true;
-        if (event.code === 'KeyD') 
-        control.keysPressed.d = true;
-        if (event.code === 'KeyQ') 
-        control.keysPressed.q = true;
-        if (event.code === 'KeyE') 
-        control.keysPressed.e = true;
+        control.keysPressed.set(event.code, true);
       }
     });
     document.addEventListener('keyup', function(event) {
       if (control.enabled) {
-        if (event.code === 'KeyW') 
-        control.keysPressed.w = false;
-        if (event.code === 'KeyA') 
-        control.keysPressed.a = false;
-        if (event.code === 'KeyS') 
-        control.keysPressed.s = false;
-        if (event.code === 'KeyD') 
-        control.keysPressed.d = false;
-        if (event.code === 'KeyQ') 
-        control.keysPressed.q = false;
-        if (event.code === 'KeyE') 
-        control.keysPressed.e = false;
+        control.keysPressed.set(event.code, false);
       }
     });
   }
@@ -1115,9 +1093,9 @@ class LightSGNode extends TransformationSGNode {
       //Generate matrix from view angles
       var rotMatrix = mat4.rotateX(mat4.create(), mat4.rotateY(mat4.create(), mat4.identity(mat4.create()), glMatrix.toRadian(this.control.lookingDir.x)), -glMatrix.toRadian(this.control.lookingDir.y));
       //Generate movement vector
-      var xMove = this.control.keysPressed.a ? 1 : 0 + this.control.keysPressed.d ? -1 : 0;
-      var yMove = this.control.keysPressed.e ? 1 : 0 + this.control.keysPressed.q ? -1 : 0;
-      var zMove = this.control.keysPressed.w ? 1 : 0 + this.control.keysPressed.s ? -1 : 0;
+      var xMove = this.control.keysPressed.get('KeyA') ? 1 : 0 + this.control.keysPressed.get('KeyD') ? -1 : 0;
+      var yMove = this.control.keysPressed.get('KeyE') ? 1 : 0 + this.control.keysPressed.get('KeyQ') ? -1 : 0;
+      var zMove = this.control.keysPressed.get('KeyW') ? 1 : 0 + this.control.keysPressed.get('KeyS') ? -1 : 0;
       var movement = vec3.scale(vec3.create(), vec3.normalize(vec3.create(), vec3.transformMat4(vec3.create(), vec3.fromValues(xMove, yMove, zMove), rotMatrix)), this.moveSpeed * deltaTimeInMilliseconds);
       //Move the camera
       this.control.position = vec3.add(vec3.create(), this.control.position, movement);
