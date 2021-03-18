@@ -34,7 +34,7 @@ loadResources({
  */
 function init(resources) {
   //create a GL context
-  gl = createContext(400 /*width*/, 400 /*height*/);
+  gl = createContext();
 
   //setup camera
   cameraStartPos = vec3.fromValues(0, 1, -10);
