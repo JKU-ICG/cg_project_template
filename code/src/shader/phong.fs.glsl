@@ -24,26 +24,16 @@ struct Light {
 	vec4 specular;
 };
 
-//TASK 2-1 use uniform for material
-//Material material = Material(vec4(0.24725, 0.1995, 0.0745, 1.),
-//														vec4(0.75164, 0.60648, 0.22648, 1.),
-//														vec4(0.628281, 0.555802, 0.366065, 1.),
-//														vec4(0., 0., 0., 0.),
-//														50.0);
+
 uniform Material u_material;
-//TASK 3-1 use uniform for light
-//Light light = Light(vec4(0., 0., 0., 1.),
-//										vec4(1., 1., 1., 1.),
-//										vec4(1., 1., 1., 1.));
 uniform Light u_light;
-//TASK 5-5 use uniform for 2nd light
-uniform Light u_light2;
+
 
 //varying vectors for light computation
 varying vec3 v_normalVec;
 varying vec3 v_eyeVec;
 varying vec3 v_lightVec;
-varying vec3 v_light2Vec;
+
 
 vec4 calculateSimplePointLight(Light light, Material material, vec3 lightVec, vec3 normalVec, vec3 eyeVec) {
 	// You can find all built-in functions (min, max, clamp, reflect, normalize, etc.) 
@@ -53,7 +43,7 @@ vec4 calculateSimplePointLight(Light light, Material material, vec3 lightVec, ve
 	normalVec = normalize(normalVec);
 	eyeVec = normalize(eyeVec);
 
-		//TASK 1-1 implement phong shader
+  // implement phong shader
 	//compute diffuse term
 	float diffuse = max(dot(normalVec,lightVec),0.0);
 
@@ -71,11 +61,8 @@ vec4 calculateSimplePointLight(Light light, Material material, vec3 lightVec, ve
 }
 
 void main() {
-	//TASK 2-3 use material uniform
-	//TASK 3-2 use light uniform
-	//TASK 5-6 use second light source
+
 	gl_FragColor =
-		calculateSimplePointLight(u_light, u_material, v_lightVec, v_normalVec, v_eyeVec)
-		+ calculateSimplePointLight(u_light2, u_material, v_light2Vec, v_normalVec, v_eyeVec);
+		calculateSimplePointLight(u_light, u_material, v_lightVec, v_normalVec, v_eyeVec);
 
 }
