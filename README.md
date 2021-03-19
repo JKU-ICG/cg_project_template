@@ -111,11 +111,11 @@ Describe how the effects work in principle and how you implemented them. If your
 ## Camera Movement
 
 ### Movement
-The **WASD-keys** are used to move the camera along the viewing direction.
-W-key: forward movement
-S-key: backward movement
-A-key: leftward movement
-D-key: rightward movement 
+The **WASD-keys** are used to move the camera along the viewing direction.  
+W-key: forward movement  
+S-key: backward movement  
+A-key: leftward movement  
+D-key: rightward movement  
 
 Additionally, the **Q/E-keys** are used to move the camera down and up, respectively.
 
