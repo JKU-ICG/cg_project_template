@@ -106,3 +106,19 @@ Mention in the comments column of the table where you have implemented the code 
 TODO
 
 Describe how the effects work in principle and how you implemented them. If your effect does not work but you tried to implement it, make sure that you explain this. Even if your code is broken do not delete it (e.g., keep it as a comment). If you describe the effect (how it works, and how to implement it in theory), then you will also get some points. If you remove the code and do not explain it in the README this will lead to 0 points for the effect and the integration SE.
+
+
+## Camera Movement
+
+### Movement
+The **WASD-keys** are used to move the camera along the viewing direction.
+W-key: forward movement
+S-key: backward movement
+A-key: leftward movement
+D-key: rightward movement 
+
+Additionally, the **Q/E-keys** are used to move the camera down and up, respectively.
+
+### Heading and Pitch
+The mouse is used to control the **heading** (mouse-x; rotation around y-axis) and the **pitch** (mouse-y; rotation around x-axis) of the camera.
+These actions have to executed while **pressing the left mouse-key**.
