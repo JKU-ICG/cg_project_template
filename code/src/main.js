@@ -10,8 +10,6 @@ var cameraCenter = vec3.create();
 
 // scenegraph root node
 var root = null;
-// light node
-var rotateLight;
 
 // time in last render step
 var previousTime = 0;
@@ -65,11 +63,11 @@ function createSceneGraph(gl, resources) {
   light.position = [0, 2, 2];
   light.append(createLightSphere(resources));
   // animated light using rotateLight transformation node
-  rotateLight = new TransformationSGNode(mat4.create(), [
-    light
-  ]);
+  // rotateLight = new TransformationSGNode(mat4.create(), [
+  //   light
+  // ]);
   // add light to scenegraph
-  root.append(rotateLight);
+  root.append(light);
 
 
   // create C3PO
@@ -131,7 +129,6 @@ function render(timeInMilliseconds) {
   camera.update(deltaTime);
 
   //TODO use your own scene for rendering
-  rotateLight.matrix = glm.rotateY(timeInMilliseconds * 0.05);
 
   //Apply camera
   camera.render(context);
