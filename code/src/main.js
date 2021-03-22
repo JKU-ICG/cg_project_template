@@ -62,10 +62,6 @@ function createSceneGraph(gl, resources) {
   light.specular = [1, 1, 1, 1];
   light.position = [0, 2, 2];
   light.append(createLightSphere(resources));
-  // animated light using rotateLight transformation node
-  // rotateLight = new TransformationSGNode(mat4.create(), [
-  //   light
-  // ]);
   // add light to scenegraph
   root.append(light);
 
