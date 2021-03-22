@@ -7,6 +7,7 @@ var gl = null,
 var camera = null;
 var cameraPos = vec3.create();
 var cameraCenter = vec3.create();
+var cameraAnimation = null;
 
 // scenegraph root node
 var root = null;
@@ -37,8 +38,11 @@ function init(resources) {
   //setup camera
   cameraStartPos = vec3.fromValues(0, 1, -10);
   camera = new UserControlledCamera(gl.canvas, cameraStartPos);
-
-
+  //setup an animation for the camera, moving it into position
+  cameraAnimation = new Animation(camera, 
+            [{matrix: mat4.translate(mat4.create(), mat4.create(), vec3.fromValues(0, 1, -10)), duration: 5000}], 
+            false);
+  cameraAnimation.start()
   //TODO create your own scenegraph
   root = createSceneGraph(gl, resources);
 }
@@ -122,7 +126,14 @@ function render(timeInMilliseconds) {
   var deltaTime = timeInMilliseconds - previousTime;
   previousTime = timeInMilliseconds;
 
+  //update animation BEFORE camera
+  cameraAnimation.update(deltaTime);
   camera.update(deltaTime);
+
+  //At the end of the automatic flight, switch to manual control
+  if(!cameraAnimation.running && !camera.control.enabled) {
+    camera.control.enabled = true;
+  }
 
   //TODO use your own scene for rendering
 

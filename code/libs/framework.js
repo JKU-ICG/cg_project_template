@@ -1014,7 +1014,7 @@ class LightSGNode extends TransformationSGNode {
     //Encapsulates camera fields for easier passing to functions
     this.control = {
       //Enables/disables manual control of the camera
-      enabled: true,
+      enabled: false,
       //Mouse Sensitivity for left/right
       xSensitivity: 0.15,
       //Mouse Sensitivity for up/down
@@ -1031,6 +1031,7 @@ class LightSGNode extends TransformationSGNode {
       mousePos: {x : -1, y : -1}
     };
     this.matrix = mat4.create();
+    this.viewMatrix = mat4.create();
 
     this.initInteraction(this.control, canvas);
     this.update(0);
@@ -1101,10 +1102,16 @@ class LightSGNode extends TransformationSGNode {
       this.control.position = vec3.add(vec3.create(), this.control.position, movement);
       //Generae the lookAt centerpoint
       var center = vec3.add(vec3.create(), vec3.transformMat4(vec3.create(), vec3.fromValues(0, 0, 1), rotMatrix), this.control.position);
-      //And finally generate our lookAt matrix
+      //And finally generate our viewMatrix
       cameraPos = this.control.position;
       cameraCenter = center;
-      this.matrix = mat4.lookAt(mat4.create(), this.control.position, center, [0,1,0]);
+      this.viewMatrix = mat4.lookAt(mat4.create(), this.control.position, center, [0,1,0]);
+    } else {
+      //If the camera is not controlled manually, assume it is animated and create the viewMatrix from the animation
+      var pos = vec3.transformMat4(vec3.create(), vec3.fromValues(0, 0, 0), this.matrix);
+      var target = vec3.transformMat4(vec3.create(), vec3.fromValues(0, 0, 1), this.matrix);
+      var up = vec3.transformMat4(vec3.create(), vec3.fromValues(0, 1, 0), this.matrix);
+      this.viewMatrix = mat4.lookAt(mat4.create(), pos, target, up);
     }
   }
 
@@ -1113,7 +1120,109 @@ class LightSGNode extends TransformationSGNode {
    * @param {ISGContext} context The rendering context
    */
   render(context) {
-    context.viewMatrix = this.matrix;
+    context.viewMatrix = this.viewMatrix;
+  }
+}
+
+/**
+ * Animates a TransformationSGNode
+ * The animation gets an array of so-called animation segments which consist of either a 
+ * transformation matrix or a function that returns a transformation matrix and a duration.
+ * 
+ * If the segment is a matrix , the animation node interpolates between the target matrix
+ * and the previous matrix, reaching the target matrix after <duration> milliseconds. 
+ * 
+ * If the segment is a function, it will call the function with the (relative) progress to
+ * get the current matrix from that function. That is, at the beginning of the segment it will
+ * be called with 0 as parameter, at the end of the segment it will be called with 1 as parameter. 
+ * 
+ * 
+ * Example usage 1:
+ * var animation = new Animation(myTransformNode,
+ *      [{matrix: mat4.translate(mat4.create(), mat4.create(), [0, 0, 0]), duration: 0},   
+ *       {matrix: mat4.translate(mat4.create(), mat4.create(), [10, 0, 0]), duration: 1000}], 
+ *      false);
+ * animation.start();
+ *  
+ * The first segment "teleports" the object to the origin, and the second one moves it 10 units 
+ * in x-direction over the course of a second. Calling stert() then starts the animation.
+ * 
+ * 
+ * Example usage 2:
+ * var animation = new Animation(myTransformNode,
+ *      [{matrix: progress => mat4.translate(mat4.create(), mat4.create(), [10 * progress, 0, 0]), duration: 1000}], 
+ *      false);
+ * animation.start();
+ * 
+ * This does the same thing as the above example but uses a function instead of two key matrices.
+ * 
+ * 
+ * Example usage 3:
+ * var animation = new Animation(myTransformNode,
+ *      [{matrix: progress => mat4.rotateY(mat4.create(), mat4.translate(mat4.create(), mat4.create(), [10, 0, 0]), glm.deg2rad(-180 * progress)), duration: 2000},   
+ *       {matrix: mat4.translate(mat4.create(), mat4.rotateY(mat4.create(), mat4.create(), glm.deg2rad(-180)), [-10, 0, 10]), duration: 10000}], 
+ *      false);
+ * animation.start();
+ * 
+ * This example shows how the two types of segments can be freely combined to generate complex animations.
+ * The first segment in this animation uses a function to rotate the object by 180 degrees around the origin,
+ * then the second segment slowly moves it a few units along the z-axis, from where the first segment left off.
+ */
+ class Animation {
+  constructor(transformNode, segments, looping) {
+    //The node that is being animated
+    this.transformNode = transformNode;
+    //The segments that form this animation
+    this.segments = segments;
+    //The last transformation matrix of the previous segment (used for interpolation)
+    this.previousSegmentMatrix = transformNode.matrix;
+    //The segment that is currently being animated
+    this.currentIndex = 0
+    this.currentSegment = segments[this.currentIndex];
+    //Whether this animation is currently running
+    this.running = false;
+    //Progress through the current segment
+    this.segmentProgress = 0;
+    //Whether this Animation loops
+    this.looping = looping || false;
+  }
+
+  start() {
+    this.running = true;
+  }
+
+  update(deltaTimeInMilliseconds) {
+    if (this.running) {
+      this.segmentProgress += deltaTimeInMilliseconds;
+      //Switch segment if appropriate
+      while (this.segmentProgress > this.currentSegment.duration) {
+        this.segmentProgress -= this.currentSegment.duration;
+        this.currentIndex++;
+        //If we reached the last segment, loop or end the animation
+        if (this.currentIndex >= this.segments.length) {
+          if (this.looping) {
+            this.currentIndex = 0;
+          } else {
+            this.running = false;
+            return;
+          }
+        }
+        //Otherwise, remember the end of the current segment as basis for the next
+        this.previousSegmentMatrix = (typeof this.currentSegment.matrix === 'function') ? this.currentSegment.matrix(1) : this.currentSegment.matrix;
+        //And switch to the next segment
+        this.currentSegment = this.segments[this.currentIndex];
+      }
+
+      //Interpolate the new matrix
+      var progressFactor = this.segmentProgress / this.currentSegment.duration;
+      var interpolatedMatrix;
+      if (typeof this.currentSegment.matrix === 'function') {
+        interpolatedMatrix = this.currentSegment.matrix(progressFactor);
+      } else {
+        interpolatedMatrix = mat4.add(mat4.create(), mat4.multiplyScalar(mat4.create(), this.currentSegment.matrix, progressFactor), mat4.multiplyScalar(mat4.create(), this.previousSegmentMatrix, 1 - progressFactor));
+      }
+      this.transformNode.matrix = interpolatedMatrix;
+    }
   }
 }
 
