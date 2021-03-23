@@ -15,10 +15,10 @@ TODO
 
 ### Group Members
 
-| Student ID    | First Name  | Last Name      | E-Mail         |
-| --------------|-------------|----------------|----------------|
-| TODO          | TODO        | TODO           | TODO           |
-| TODO          | TODO        | TODO           | TODO           |
+|.              | Student ID    | First Name  | Last Name      | E-Mail         |
+|---------------|---------------|-------------|----------------|----------------|
+| **Student 1** | TODO          | TODO        | TODO           | TODO           |
+| **Student 2** | TODO          | TODO        | TODO           | TODO           |
 
 ### Concept Submission due on 26.03.2021
 
