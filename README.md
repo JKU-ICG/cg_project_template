@@ -17,10 +17,10 @@ TODO
 
 ### Group Members
 
-| Student ID    | First Name  | Last Name      |
-| --------------|-------------|----------------|
-| TODO          | TODO        | TODO           |
-| TODO          | TODO        | TODO           |
+| Student ID    | First Name  | Last Name      | E-Mail         |
+| --------------|-------------|----------------|----------------|
+| TODO          | TODO        | TODO           | TODO           |
+| TODO          | TODO        | TODO           | TODO           |
 
 ### Concept
 
