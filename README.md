@@ -87,19 +87,17 @@ Mention in the comments column of the table where you have implemented the code 
 |----------------|----|--------------------------------------------------------------------------------------------------------|-------------|-----------------|
 | yes/no/partial | 1a | Add at least one manually composed object that consists of multiple scene graph nodes.                 | 6           |                 |
 | yes/no/partial | 1b | Animate separate parts of the composed object and also move the composed object itself in the scene.   | 4           |                 |
-| yes/no/partial | 1c | Use at least two clearly different materials for the composed object.                                  | 4           |                 |
-| yes/no/partial | 2a | Create one scene graph node that renders a complex 3D shape. Fully specify properties for this object. | 9           |                 |
-| yes/no/partial | 2b | Apply a texture to your self-created complex object by setting proper texture coordinates.             | 6           |                 |
+| yes/no/partial | 1c | Use at least two clearly different materials for the composed object.                                  | 3           |                 |
+| yes/no/partial | 2a | Create one scene graph node that renders a complex 3D shape. Fully specify properties for this object. | 7           |                 |
+| yes/no/partial | 2b | Apply a texture to your self-created complex object by setting proper texture coordinates.             | 3           |                 |
 | yes/no/partial | 3a | Use multiple light sources.                                                                            | 5           |                 |
 | yes/no/partial | 3b | One light source should be moving in the scene.                                                        | 3           |                 |
-| yes/no/partial | 3c | Implement at least one spot-light.                                                                     | 9           |                 |
+| yes/no/partial | 3c | Implement at least one spot-light.                                                                     | 8           |                 |
 | yes/no/partial | 3d | Apply Phong shading to all objects in the scene.                                                       | 4           |                 |
-| yes/no/partial | 4a | Animations start automatically.                                                                        | 2           |                 |
-| yes/no/partial | 4b | Animations are framerate-independent.                                                                  | 3           |                 |
-| yes/no/partial | 4c | The camera is animated without user intervention.                                                      | 5           |                 |
+| yes/no/partial | 4  |  The camera is animated without user intervention. Animation quality and complexity influence the judgement.                                                                        | 7           |                 |
 | yes/no/partial | Sx | TODO Special Effect Name                                                                               | TODO        |                 |
 | yes/no/partial | Sy | TODO Special Effect Name                                                                               | TODO        |                 |
-| yes/no/partial | SE | Special effects are nicely integrated and well documented                                              | 10          |                 |
+| yes/no/partial | SE | Special effects are nicely integrated and well documented                                              | 20          |                 |
 
 ### Special Effect Description
 
