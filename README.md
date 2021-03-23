@@ -94,7 +94,7 @@ Mention in the comments column of the table where you have implemented the code 
 | yes/no/partial | 3b | One light source should be moving in the scene.                                                        | 3           |                 |
 | yes/no/partial | 3c | Implement at least one spot-light.                                                                     | 8           |                 |
 | yes/no/partial | 3d | Apply Phong shading to all objects in the scene.                                                       | 4           |                 |
-| yes/no/partial | 4  |  The camera is animated without user intervention. Animation quality and complexity influence the judgement.                                                                        | 7           |                 |
+| yes/no/partial | 4  | The camera is animated 30 seconds without user intervention. Animation quality and complexity of the camera and the objects influence the judgement.                                                                       | 7           |                 |
 | yes/no/partial | Sx | TODO Special Effect Name                                                                               | TODO        |                 |
 | yes/no/partial | Sy | TODO Special Effect Name                                                                               | TODO        |                 |
 | yes/no/partial | SE | Special effects are nicely integrated and well documented                                              | 20          |                 |
