@@ -5,9 +5,7 @@ Submission template for the CG lab project at the Johannes Kepler University Lin
 ### Explanation
 
 This `README.md` needs to be pushed to Github for each of the 3 delivery dates.
-For every submission change/extend the corresponding sections by replacing the *TODO* markers.
-*In order to meet the deadlines make sure you push everything to your Github repository.*
-For more details see the Moodle page.
+For every submission change/extend the corresponding sections by replacing the *TODO* markers. Make sure that you push everything to your Github repository before the respective deadlines. For more details, see the Moodle page.
 
 ## Concept submission due on 26.03.2021
 
@@ -22,7 +20,7 @@ TODO
 | TODO          | TODO        | TODO           | TODO           |
 | TODO          | TODO        | TODO           | TODO           |
 
-### Concept
+### Concept Submission due on 26.03.2021
 
 TODO
 
@@ -45,13 +43,12 @@ Selected special effects must add up to exactly 30 points:
 | yes/no     | S9 | Motion blur                           | 30     |
 | yes/no     | SO | Own suggestion (preapproved by email) | TODO   |
 
-## Intermediate submission due on 23.04.2021
+## Intermediate Submission due on 23.04.2021
 
 Prepare a first version of your movie that:
  * is 30 seconds long,
- * contains animated objects,
- * has an animated camera movement, and
- * runs on the PCs in the CG lab room. 
+ * contains animated objects, and
+ * has an animated camera movement. 
 
 Push your code on the day of the submission deadline. 
 The repository needs to contain:
@@ -62,7 +59,7 @@ Nothing to change here in `README` file.
 
 **Note:** You don’t need to use any lighting, materials, or textures yet. This will be discussed in later labs and can be added to the project afterwards!
 
-## Final submission due on 22.06.2021
+## Final Submission due on 22.06.2021
 
 The repository needs to contain:
   * code/ Documented code + resources + libs
