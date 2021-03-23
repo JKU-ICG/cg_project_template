@@ -92,19 +92,16 @@ Mention in the comments column of the table where you have implemented the code 
 | yes/no/partial | 2b | Apply a texture to your self-created complex object by setting proper texture coordinates.             | 3           |                 |
 | yes/no/partial | 3a | Use multiple light sources.                                                                            | 5           |                 |
 | yes/no/partial | 3b | One light source should be moving in the scene.                                                        | 3           |                 |
-| yes/no/partial | 3c | Implement at least one spot-light.                                                                     | 7           |                 |
-| yes/no/partial | 3d | Apply Phong shading to all objects in the scene.                                                       | 3           |                 |
-| yes/no/partial | 4a | Use the WASD-keys to manually control the camera along the viewing direction                           | 6           |                 |
-| yes/no/partial | 4b | Use the mouse to control the heading and pitch of the camera relative to the ground.                   | 3           |                 |
-| yes/no/partial | 5a | Animations start automatically.                                                                        | 2           |                 |
-| yes/no/partial | 5b | Animations are framerate-independent.                                                                  | 3           |                 |
-| yes/no/partial | 5c | The camera is animated without user intervention.                                                      | 5           |                 |
+| yes/no/partial | 3c | Implement at least one spot-light.                                                                     | 8           |                 |
+| yes/no/partial | 3d | Apply Phong shading to all objects in the scene.                                                       | 4           |                 |
+| yes/no/partial | 4  | The camera is animated 30 seconds without user intervention. Animation quality and complexity of the camera and the objects influence the judgement.                                                                       | 7           |                 |
 | yes/no/partial | Sx | TODO Special Effect Name                                                                               | TODO        |                 |
 | yes/no/partial | Sy | TODO Special Effect Name                                                                               | TODO        |                 |
-| yes/no/partial | SE | Special effects are nicely integrated and well documented                                              | 10          |                 |
+| yes/no/partial | SE | Special effects are nicely integrated and well documented                                              | 20          |                 |
 
 ### Special Effect Description
 
 TODO
 
 Describe how the effects work in principle and how you implemented them. If your effect does not work but you tried to implement it, make sure that you explain this. Even if your code is broken do not delete it (e.g., keep it as a comment). If you describe the effect (how it works, and how to implement it in theory), then you will also get some points. If you remove the code and do not explain it in the README this will lead to 0 points for the effect and the integration SE.
+

@@ -999,6 +999,234 @@ class LightSGNode extends TransformationSGNode {
 }
 
 /**
+ * Implementation of a manually controlled camera.
+ * 
+ * Movement scheme:
+ * Click & drag to rotate the camera
+ * W,A,S,D - Movement forward/left/backward/right
+ * Q,E - Movement down/up
+ * All movement is relative to the current viewing direction of the camera.
+ */
+ class UserControlledCamera {
+  constructor(canvas, position) {
+    //Camera movement speed in 1000 m/s
+    this.moveSpeed = 0.05;
+    //Encapsulates camera fields for easier passing to functions
+    this.control = {
+      //Enables/disables manual control of the camera
+      enabled: false,
+      //Mouse Sensitivity for left/right
+      xSensitivity: 0.15,
+      //Mouse Sensitivity for up/down
+      ySensitivity: 0.15,
+      //Direction the camera is currently looking (angles in degrees)
+      lookingDir: {x: 0, y: 0},
+      //Absolute position of the camera in world space
+      position: position||vec3.create(),
+      //Keys that are currently pressed
+      keysPressed: new Map([['KeyW', false], ['KeyA', false], ['KeyS', false], ['KeyD', false], ['KeyQ', false], ['KeyE', false]]),
+      //Enables/disables rotation of the camera with the mouse
+      mouseEnabled: false,
+      //Most recent position of the mouse on screen
+      mousePos: {x : -1, y : -1}
+    };
+    this.matrix = mat4.create();
+    this.viewMatrix = mat4.create();
+
+    this.initInteraction(this.control, canvas);
+    this.update(0);
+  }
+
+  initInteraction(control, canvas) {
+    function toPos(event) {
+      //convert to local coordinates
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top
+      };
+    }
+
+    //Mouse interactions
+    window.addEventListener('mousedown', function(event) {
+      control.mouseEnabled = true;
+      control.mousePos = toPos(event);
+    });
+
+    window.addEventListener('mouseup', function(event) {
+      control.mouseEnabled = false;
+    });
+
+    canvas.addEventListener('mousemove', function(event) {
+      if (control.enabled && control.mouseEnabled) {
+        const pos = toPos(event);
+        const delta = { x : (control.mousePos.x - pos.x) * control.xSensitivity, y: (control.mousePos.y - pos.y) * control.ySensitivity};
+        control.mousePos = pos;
+
+        //Change left/right angle (clamp to (-360, 360) to prevent potential overflow glitches)
+        control.lookingDir.x += delta.x;
+        if (control.lookingDir.x < -360 || control.lookingDir.x > 360)
+          control.lookingDir.x %= 360;
+        //Change up/down angle (clamp to (-89.9, 89.9) degree to prevente bugs at +/- 90 degrees)
+        control.lookingDir.y += delta.y;
+        control.lookingDir.y = Math.min(Math.max(-89.9, control.lookingDir.y), 89.9);
+      }
+    });
+  
+    //Keyboard interactions
+    document.addEventListener('keydown', function(event) {
+      if (control.enabled) {
+        control.keysPressed.set(event.code, true);
+      }
+    });
+    document.addEventListener('keyup', function(event) {
+      if (control.enabled) {
+        control.keysPressed.set(event.code, false);
+      }
+    });
+  }
+
+  /**
+   * Use update(deltaTime) to update the camera position.
+   */
+  update(deltaTimeInMilliseconds) {
+    if (this.control.enabled) {
+      //Generate matrix from view angles
+      var rotMatrix = mat4.rotateX(mat4.create(), mat4.rotateY(mat4.create(), mat4.identity(mat4.create()), glMatrix.toRadian(this.control.lookingDir.x)), -glMatrix.toRadian(this.control.lookingDir.y));
+      //Generate movement vector
+      var xMove = this.control.keysPressed.get('KeyA') ? 1 : 0 + this.control.keysPressed.get('KeyD') ? -1 : 0;
+      var yMove = this.control.keysPressed.get('KeyE') ? 1 : 0 + this.control.keysPressed.get('KeyQ') ? -1 : 0;
+      var zMove = this.control.keysPressed.get('KeyW') ? 1 : 0 + this.control.keysPressed.get('KeyS') ? -1 : 0;
+      var movement = vec3.scale(vec3.create(), vec3.normalize(vec3.create(), vec3.transformMat4(vec3.create(), vec3.fromValues(xMove, yMove, zMove), rotMatrix)), this.moveSpeed * deltaTimeInMilliseconds);
+      //Move the camera
+      this.control.position = vec3.add(vec3.create(), this.control.position, movement);
+      //Generae the lookAt centerpoint
+      var center = vec3.add(vec3.create(), vec3.transformMat4(vec3.create(), vec3.fromValues(0, 0, 1), rotMatrix), this.control.position);
+      //And finally generate our viewMatrix
+      cameraPos = this.control.position;
+      cameraCenter = center;
+      this.viewMatrix = mat4.lookAt(mat4.create(), this.control.position, center, [0,1,0]);
+    } else {
+      //If the camera is not controlled manually, assume it is animated and create the viewMatrix from the animation
+      var pos = vec3.transformMat4(vec3.create(), vec3.fromValues(0, 0, 0), this.matrix);
+      var target = vec3.transformMat4(vec3.create(), vec3.fromValues(0, 0, 1), this.matrix);
+      var up = vec3.transformMat4(vec3.create(), vec3.fromValues(0, 1, 0), this.matrix);
+      this.viewMatrix = mat4.lookAt(mat4.create(), pos, target, up);
+    }
+  }
+
+  /**
+   * Use render(context) to apply the camera to the context.
+   * @param {ISGContext} context The rendering context
+   */
+  render(context) {
+    context.viewMatrix = this.viewMatrix;
+  }
+}
+
+/**
+ * Animates a TransformationSGNode
+ * The animation gets an array of so-called animation segments which consist of either a 
+ * transformation matrix or a function that returns a transformation matrix and a duration.
+ * 
+ * If the segment is a matrix , the animation node interpolates between the target matrix
+ * and the previous matrix, reaching the target matrix after <duration> milliseconds. 
+ * 
+ * If the segment is a function, it will call the function with the (relative) progress to
+ * get the current matrix from that function. That is, at the beginning of the segment it will
+ * be called with 0 as parameter, at the end of the segment it will be called with 1 as parameter. 
+ * 
+ * 
+ * Example usage 1:
+ * var animation = new Animation(myTransformNode,
+ *      [{matrix: mat4.translate(mat4.create(), mat4.create(), [0, 0, 0]), duration: 0},   
+ *       {matrix: mat4.translate(mat4.create(), mat4.create(), [10, 0, 0]), duration: 1000}], 
+ *      false);
+ * animation.start();
+ *  
+ * The first segment "teleports" the object to the origin, and the second one moves it 10 units 
+ * in x-direction over the course of a second. Calling stert() then starts the animation.
+ * 
+ * 
+ * Example usage 2:
+ * var animation = new Animation(myTransformNode,
+ *      [{matrix: progress => mat4.translate(mat4.create(), mat4.create(), [10 * progress, 0, 0]), duration: 1000}], 
+ *      false);
+ * animation.start();
+ * 
+ * This does the same thing as the above example but uses a function instead of two key matrices.
+ * 
+ * 
+ * Example usage 3:
+ * var animation = new Animation(myTransformNode,
+ *      [{matrix: progress => mat4.rotateY(mat4.create(), mat4.translate(mat4.create(), mat4.create(), [10, 0, 0]), glm.deg2rad(-180 * progress)), duration: 2000},   
+ *       {matrix: mat4.translate(mat4.create(), mat4.rotateY(mat4.create(), mat4.create(), glm.deg2rad(-180)), [-10, 0, 10]), duration: 10000}], 
+ *      false);
+ * animation.start();
+ * 
+ * This example shows how the two types of segments can be freely combined to generate complex animations.
+ * The first segment in this animation uses a function to rotate the object by 180 degrees around the origin,
+ * then the second segment slowly moves it a few units along the z-axis, from where the first segment left off.
+ */
+ class Animation {
+  constructor(transformNode, segments, looping) {
+    //The node that is being animated
+    this.transformNode = transformNode;
+    //The segments that form this animation
+    this.segments = segments;
+    //The last transformation matrix of the previous segment (used for interpolation)
+    this.previousSegmentMatrix = transformNode.matrix;
+    //The segment that is currently being animated
+    this.currentIndex = 0
+    this.currentSegment = segments[this.currentIndex];
+    //Whether this animation is currently running
+    this.running = false;
+    //Progress through the current segment
+    this.segmentProgress = 0;
+    //Whether this Animation loops
+    this.looping = looping || false;
+  }
+
+  start() {
+    this.running = true;
+  }
+
+  update(deltaTimeInMilliseconds) {
+    if (this.running) {
+      this.segmentProgress += deltaTimeInMilliseconds;
+      //Switch segment if appropriate
+      while (this.segmentProgress > this.currentSegment.duration) {
+        this.segmentProgress -= this.currentSegment.duration;
+        this.currentIndex++;
+        //If we reached the last segment, loop or end the animation
+        if (this.currentIndex >= this.segments.length) {
+          if (this.looping) {
+            this.currentIndex = 0;
+          } else {
+            this.running = false;
+            return;
+          }
+        }
+        //Otherwise, remember the end of the current segment as basis for the next
+        this.previousSegmentMatrix = (typeof this.currentSegment.matrix === 'function') ? this.currentSegment.matrix(1) : this.currentSegment.matrix;
+        //And switch to the next segment
+        this.currentSegment = this.segments[this.currentIndex];
+      }
+
+      //Interpolate the new matrix
+      var progressFactor = this.segmentProgress / this.currentSegment.duration;
+      var interpolatedMatrix;
+      if (typeof this.currentSegment.matrix === 'function') {
+        interpolatedMatrix = this.currentSegment.matrix(progressFactor);
+      } else {
+        interpolatedMatrix = mat4.add(mat4.create(), mat4.multiplyScalar(mat4.create(), this.currentSegment.matrix, progressFactor), mat4.multiplyScalar(mat4.create(), this.previousSegmentMatrix, 1 - progressFactor));
+      }
+      this.transformNode.matrix = interpolatedMatrix;
+    }
+  }
+}
+
+/**
  * returns a new rendering context
  * @param gl the gl context
  * @param projectionMatrix optional projection Matrix
