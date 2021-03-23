@@ -15,7 +15,7 @@ TODO
 
 ### Group Members
 
-|.              | Student ID    | First Name  | Last Name      | E-Mail         |
+|               | Student ID    | First Name  | Last Name      | E-Mail         |
 |---------------|---------------|-------------|----------------|----------------|
 | **Student 1** | TODO          | TODO        | TODO           | TODO           |
 | **Student 2** | TODO          | TODO        | TODO           | TODO           |
