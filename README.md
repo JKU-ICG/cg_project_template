@@ -78,7 +78,8 @@ Workload has to sum up to 100%.
 
 ### Effects
 
-Mention in the comments column of the table where you have implemented the code and where it is visible (e.g., spotlight is the lamp post shining on the street). Replace yes/no/partical with one of the options.
+Select which effects you have implemented in the table below. Replace yes/no/partial with one of the options.
+Mention in the comments column of the table where you have implemented the code and where it is visible (e.g., spotlight is the lamp post shining on the street). 
 
 | Implemented    | ID | Name                                                                                                   | Max. Points | Issues/Comments |
 |----------------|----|--------------------------------------------------------------------------------------------------------|-------------|-----------------|
