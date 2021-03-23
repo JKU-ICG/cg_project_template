@@ -28,7 +28,7 @@ TODO
 
 ### Special Effects
 
-Selected special effects must add up to exactly 30 points:
+Selected special effects must add up to exactly 30 points. Replace yes/no with either yes or no.
 
 | Selected   | ID | Name                                  | Points |
 |------------|----|---------------------------------------|--------|
@@ -78,7 +78,7 @@ Workload has to sum up to 100%.
 
 ### Effects
 
-Mention in the comments column of the table where you have implemented the code and where it is visible (e.g., spotlight is the lamp post shining on the street).
+Mention in the comments column of the table where you have implemented the code and where it is visible (e.g., spotlight is the lamp post shining on the street). Replace yes/no/partical with one of the options.
 
 | Implemented    | ID | Name                                                                                                   | Max. Points | Issues/Comments |
 |----------------|----|--------------------------------------------------------------------------------------------------------|-------------|-----------------|
