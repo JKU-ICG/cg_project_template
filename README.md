@@ -9,10 +9,6 @@ For every submission change/extend the corresponding sections by replacing the *
 
 ## Concept submission due on 26.03.2021
 
-### Movie Name
-
-TODO
-
 ### Group Members
 
 |               | Student ID    | First Name  | Last Name      | E-Mail         |
