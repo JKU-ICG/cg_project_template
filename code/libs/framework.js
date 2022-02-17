@@ -117,7 +117,7 @@ function createContext(width, height) {
   canvas.height = height || 400;
   document.body.appendChild(canvas);
   createHtmlText(canvas);
-  return canvas.getContext('webgl', { premultipliedAlpha: false, alpha: false } );
+  return canvas.getContext('webgl', { premultipliedAlpha: false, alpha: false });
 }
 
 /**
@@ -266,7 +266,7 @@ var glm = (function () {
         r = mat4.rotateZ(r, r, deg2rad(transform.rotateZ));
       }
       if (transform.scale) {
-        r = mat4.scale(r, r, typeof transform.scale === 'number' ?  [transform.scale, transform.scale, transform.scale]: transform.scale);
+        r = mat4.scale(r, r, typeof transform.scale === 'number' ? [transform.scale, transform.scale, transform.scale] : transform.scale);
       }
       return r;
     }
@@ -434,69 +434,69 @@ function parseObjFile(objectData) {
       becomes:
         ['16/92/11', '14/101/22', '1/69/1'];
       */
-      for (var j = 0, eleLen = elements.length; j < eleLen; j++){
-          // Triangulating polygons
-          // Triangles are generated in a "fan"-shaped pattern for 
-          // polygons with more than 3 corners.
-          // polygon: 'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2 v3/t3/vn3/ v4/t4/vn4/'
-          // corresponding triangles:
-          //      'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2'
-          //      'f v0/t0/vn0 v2/t2/vn2 v3/t3/vn3'
-          //      'f v0/t0/vn0 v3/t3/vn3 v4/t4/vn4'
-          if(!(elements[j] in unpacked.hashindices)){
-              /*
-              Each element of the face line array is a vertex which has its
-              attributes delimited by a forward slash. This will separate
-              each attribute into another array:
-                  '19/92/11'
-              becomes:
-                  vertex = ['19', '92', '11'];
-              where
-                  vertex[0] is the vertex index
-                  vertex[1] is the texture index
-                  vertex[2] is the normal index
-               Think of faces having Vertices which are comprised of the
-               attributes location (v), texture (vt), and normal (vn).
-               */
-              var vertex = elements[ j ].split( '/' );
-              /*
-               The verts, textures, and vertNormals arrays each contain a
-               flattend array of coordinates.
-               Because it gets confusing by referring to vertex and then
-               vertex (both are different in my descriptions) I will explain
-               what's going on using the vertexNormals array:
-               vertex[2] will contain the one-based index of the vertexNormals
-               section (vn). One is subtracted from this index number to play
-               nice with javascript's zero-based array indexing.
-               Because vertexNormal is a flattened array of x, y, z values,
-               simple pointer arithmetic is used to skip to the start of the
-               vertexNormal, then the offset is added to get the correct
-               component: +0 is x, +1 is y, +2 is z.
-               This same process is repeated for verts and textures.
-               */
-              // vertex position
-              unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 0]);
-              unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 1]);
-              unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 2]);
-              // vertex textures
-              if (textures.length) {
-                unpacked.textures.push(+textures[(vertex[1] - 1) * 2 + 0]);
-                unpacked.textures.push(+textures[(vertex[1] - 1) * 2 + 1]);
-              }
-              // vertex normals
-              unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 0]);
-              unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 1]);
-              unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 2]);
-              // add the newly created vertex to the list of indices
-              unpacked.hashindices[elements[j]] = unpacked.index;
-              // increment the counter
-              unpacked.index += 1;
+      for (var j = 0, eleLen = elements.length; j < eleLen; j++) {
+        // Triangulating polygons
+        // Triangles are generated in a "fan"-shaped pattern for 
+        // polygons with more than 3 corners.
+        // polygon: 'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2 v3/t3/vn3/ v4/t4/vn4/'
+        // corresponding triangles:
+        //      'f v0/t0/vn0 v1/t1/vn1 v2/t2/vn2'
+        //      'f v0/t0/vn0 v2/t2/vn2 v3/t3/vn3'
+        //      'f v0/t0/vn0 v3/t3/vn3 v4/t4/vn4'
+        if (!(elements[j] in unpacked.hashindices)) {
+          /*
+          Each element of the face line array is a vertex which has its
+          attributes delimited by a forward slash. This will separate
+          each attribute into another array:
+              '19/92/11'
+          becomes:
+              vertex = ['19', '92', '11'];
+          where
+              vertex[0] is the vertex index
+              vertex[1] is the texture index
+              vertex[2] is the normal index
+           Think of faces having Vertices which are comprised of the
+           attributes location (v), texture (vt), and normal (vn).
+           */
+          var vertex = elements[j].split('/');
+          /*
+           The verts, textures, and vertNormals arrays each contain a
+           flattend array of coordinates.
+           Because it gets confusing by referring to vertex and then
+           vertex (both are different in my descriptions) I will explain
+           what's going on using the vertexNormals array:
+           vertex[2] will contain the one-based index of the vertexNormals
+           section (vn). One is subtracted from this index number to play
+           nice with javascript's zero-based array indexing.
+           Because vertexNormal is a flattened array of x, y, z values,
+           simple pointer arithmetic is used to skip to the start of the
+           vertexNormal, then the offset is added to get the correct
+           component: +0 is x, +1 is y, +2 is z.
+           This same process is repeated for verts and textures.
+           */
+          // vertex position
+          unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 0]);
+          unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 1]);
+          unpacked.verts.push(+verts[(vertex[0] - 1) * 3 + 2]);
+          // vertex textures
+          if (textures.length) {
+            unpacked.textures.push(+textures[(vertex[1] - 1) * 2 + 0]);
+            unpacked.textures.push(+textures[(vertex[1] - 1) * 2 + 1]);
           }
-          if (j > 1) {
-              unpacked.indices.push(unpacked.hashindices[elements[0]]);
-              unpacked.indices.push(unpacked.hashindices[elements[j-1]]);
-              unpacked.indices.push(unpacked.hashindices[elements[j]]);
-          }
+          // vertex normals
+          unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 0]);
+          unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 1]);
+          unpacked.norms.push(+vertNormals[(vertex[2] - 1) * 3 + 2]);
+          // add the newly created vertex to the list of indices
+          unpacked.hashindices[elements[j]] = unpacked.index;
+          // increment the counter
+          unpacked.index += 1;
+        }
+        if (j > 1) {
+          unpacked.indices.push(unpacked.hashindices[elements[0]]);
+          unpacked.indices.push(unpacked.hashindices[elements[j - 1]]);
+          unpacked.indices.push(unpacked.hashindices[elements[j]]);
+        }
       }
     }
   }
@@ -518,10 +518,10 @@ function parseMtlFile(fileContent) {
   var MAP_KD_RE = /^map_Kd\s/;
   var WHITESPACE_RE = /\s+/;
 
-  const materials = { };
+  const materials = {};
   var material = null;
 
-  fileContent.split('\n').forEach(function(line) {
+  fileContent.split('\n').forEach(function (line) {
     line = line.trim();
     const elems = line.split(WHITESPACE_RE);
     elems.shift(); //skip marker
@@ -538,13 +538,13 @@ function parseMtlFile(fileContent) {
     } else if (NS_RE.test(line)) {
       material.shininess = parseFloat(elems[0]);
     } else if (KA_RE.test(line)) {
-      material.ambient = [ parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
+      material.ambient = [parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
     } else if (KD_RE.test(line)) {
-      material.diffuse = [ parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
+      material.diffuse = [parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
     } else if (KS_RE.test(line)) {
-      material.specular = [ parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
+      material.specular = [parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
     } else if (KE_RE.test(line)) {
-      material.emission = [ parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
+      material.emission = [parseFloat(elems[0]), parseFloat(elems[1]), parseFloat(elems[2]), 1];
     } else if (MAP_KD_RE.test(line)) {
       material.texture = elems[0];
     }
@@ -662,7 +662,7 @@ class TransformationSGNode extends SGNode {
   // For consistency with labs:
   // using .matrix= instead of setMatrix also works!
   setMatrix(matrix) {
-     this.matrix = matrix;
+    this.matrix = matrix;
   }
 }
 
@@ -713,7 +713,7 @@ class SetUniformSGNode extends SGNode {
     const gl = context.gl,
       shader = context.shader;
     const that = this;
-    Object.keys(this.uniforms).forEach(function(key) {
+    Object.keys(this.uniforms).forEach(function (key) {
       const value = that.uniforms[key];
       const loc = gl.getUniformLocation(shader, key);
       if (typeof value === 'number') {
@@ -722,7 +722,7 @@ class SetUniformSGNode extends SGNode {
         gl.uniform1i(loc, value ? 1 : 0);
       } else if (Array.isArray(value)) {
         const l = value.length;
-        const f = gl['uniform'+l+'f']
+        const f = gl['uniform' + l + 'f']
         f.apply(gl, [loc].concat(value));
       }
     });
@@ -739,12 +739,12 @@ class SetUniformSGNode extends SGNode {
 }
 
 class AdvancedTextureSGNode extends SGNode {
-  constructor(image, children ) {
-      super(children);
-      this.image = image;
-      this.textureunit = 0;
-      this.uniform = 'u_tex';
-      this.textureId = -1;
+  constructor(image, children) {
+    super(children);
+    this.image = image;
+    this.textureunit = 0;
+    this.uniform = 'u_tex';
+    this.textureId = -1;
   }
 
   init(gl) {
@@ -910,21 +910,21 @@ class MaterialSGNode extends SGNode {
   setMaterialUniforms(context) {
     const gl = context.gl;
     //no materials in use
-    if (!context.shader || !isValidUniformLocation(gl.getUniformLocation(context.shader, this.uniform+'.ambient'))) {
+    if (!context.shader || !isValidUniformLocation(gl.getUniformLocation(context.shader, this.uniform + '.ambient'))) {
       return;
     }
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.ambient'), this.ambient);
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.diffuse'), this.diffuse);
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.specular'), this.specular);
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.emission'), this.emission);
-    gl.uniform1f(gl.getUniformLocation(context.shader, this.uniform+'.shininess'), this.shininess);
+    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform + '.ambient'), this.ambient);
+    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform + '.diffuse'), this.diffuse);
+    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform + '.specular'), this.specular);
+    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform + '.emission'), this.emission);
+    gl.uniform1f(gl.getUniformLocation(context.shader, this.uniform + '.shininess'), this.shininess);
   }
 
   render(context) {
     this.setMaterialUniforms(context);
 
     //just set the light with the precomputed world position
-    this.lights.forEach(function(l) {
+    this.lights.forEach(function (l) {
       l.setLight(context);
     })
     //render children
@@ -953,28 +953,28 @@ class LightSGNode extends TransformationSGNode {
   setLightUniforms(context) {
     const gl = context.gl;
     //no materials in use
-    if (!context.shader || !isValidUniformLocation(gl.getUniformLocation(context.shader, this.uniform+'.ambient'))) {
+    if (!context.shader || !isValidUniformLocation(gl.getUniformLocation(context.shader, this.uniform + '.ambient'))) {
       return;
     }
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.ambient'), this.ambient);
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.diffuse'), this.diffuse);
-    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform+'.specular'), this.specular);
+    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform + '.ambient'), this.ambient);
+    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform + '.diffuse'), this.diffuse);
+    gl.uniform4fv(gl.getUniformLocation(context.shader, this.uniform + '.specular'), this.specular);
   }
 
   setLightPosition(context) {
     const gl = context.gl;
-    if (!context.shader || !isValidUniformLocation(gl.getUniformLocation(context.shader, this.uniform+'Pos'))) {
+    if (!context.shader || !isValidUniformLocation(gl.getUniformLocation(context.shader, this.uniform + 'Pos'))) {
       return;
     }
     const position = this._worldPosition || this.position;
-    gl.uniform3f(gl.getUniformLocation(context.shader, this.uniform+'Pos'), position[0], position[1], position[2]);
+    gl.uniform3f(gl.getUniformLocation(context.shader, this.uniform + 'Pos'), position[0], position[1], position[2]);
   }
 
   computeLightPosition(context) {
     //transform with the current model view matrix
     const modelViewMatrix = mat4.multiply(mat4.create(), context.viewMatrix, context.sceneMatrix);
     const original = this.position;
-    const position =  vec4.transformMat4(vec4.create(), vec4.fromValues(original[0], original[1],original[2], 1), modelViewMatrix);
+    const position = vec4.transformMat4(vec4.create(), vec4.fromValues(original[0], original[1], original[2], 1), modelViewMatrix);
 
     this._worldPosition = position;
   }
@@ -1007,7 +1007,7 @@ class LightSGNode extends TransformationSGNode {
  * Q,E - Movement down/up
  * All movement is relative to the current viewing direction of the camera.
  */
- class UserControlledCamera {
+class UserControlledCamera {
   constructor(canvas, position) {
     //Camera movement speed in 1000 m/s
     this.moveSpeed = 0.05;
@@ -1020,15 +1020,15 @@ class LightSGNode extends TransformationSGNode {
       //Mouse Sensitivity for up/down
       ySensitivity: 0.15,
       //Direction the camera is currently looking (angles in degrees)
-      lookingDir: {x: 0, y: 0},
+      lookingDir: { x: 0, y: 0 },
       //Absolute position of the camera in world space
-      position: position||vec3.create(),
+      position: position || vec3.create(),
       //Keys that are currently pressed
       keysPressed: new Map([['KeyW', false], ['KeyA', false], ['KeyS', false], ['KeyD', false], ['KeyQ', false], ['KeyE', false]]),
       //Enables/disables rotation of the camera with the mouse
       mouseEnabled: false,
       //Most recent position of the mouse on screen
-      mousePos: {x : -1, y : -1}
+      mousePos: { x: -1, y: -1 }
     };
     this.matrix = mat4.create();
     this.viewMatrix = mat4.create();
@@ -1048,19 +1048,19 @@ class LightSGNode extends TransformationSGNode {
     }
 
     //Mouse interactions
-    window.addEventListener('mousedown', function(event) {
+    window.addEventListener('mousedown', function (event) {
       control.mouseEnabled = true;
       control.mousePos = toPos(event);
     });
 
-    window.addEventListener('mouseup', function(event) {
+    window.addEventListener('mouseup', function (event) {
       control.mouseEnabled = false;
     });
 
-    canvas.addEventListener('mousemove', function(event) {
+    canvas.addEventListener('mousemove', function (event) {
       if (control.enabled && control.mouseEnabled) {
         const pos = toPos(event);
-        const delta = { x : (control.mousePos.x - pos.x) * control.xSensitivity, y: (control.mousePos.y - pos.y) * control.ySensitivity};
+        const delta = { x: (control.mousePos.x - pos.x) * control.xSensitivity, y: (control.mousePos.y - pos.y) * control.ySensitivity };
         control.mousePos = pos;
 
         //Change left/right angle (clamp to (-360, 360) to prevent potential overflow glitches)
@@ -1072,14 +1072,14 @@ class LightSGNode extends TransformationSGNode {
         control.lookingDir.y = Math.min(Math.max(-89.9, control.lookingDir.y), 89.9);
       }
     });
-  
+
     //Keyboard interactions
-    document.addEventListener('keydown', function(event) {
+    document.addEventListener('keydown', function (event) {
       if (control.enabled) {
         control.keysPressed.set(event.code, true);
       }
     });
-    document.addEventListener('keyup', function(event) {
+    document.addEventListener('keyup', function (event) {
       if (control.enabled) {
         control.keysPressed.set(event.code, false);
       }
@@ -1105,12 +1105,12 @@ class LightSGNode extends TransformationSGNode {
       //And finally generate our viewMatrix
       cameraPos = this.control.position;
       cameraCenter = center;
-      this.viewMatrix = mat4.lookAt(mat4.create(), this.control.position, center, [0,1,0]);
+      this.viewMatrix = mat4.lookAt(mat4.create(), this.control.position, center, [0, 1, 0]);
     } else {
       //If the camera is not controlled manually, assume it is animated and create the viewMatrix from the animation
       var pos = vec3.transformMat4(vec3.create(), vec3.fromValues(0, 0, 0), this.matrix);
       var target = vec3.transformMat4(vec3.create(), vec3.fromValues(0, 0, 1), this.matrix);
-      var up = vec3.transformMat4(vec3.create(), vec3.fromValues(0, 1, 0), this.matrix);
+      var up = vec4.transformMat4(vec4.create(), vec4.fromValues(0, 1, 0, 0), this.matrix);
       this.viewMatrix = mat4.lookAt(mat4.create(), pos, target, up);
     }
   }
@@ -1168,7 +1168,7 @@ class LightSGNode extends TransformationSGNode {
  * The first segment in this animation uses a function to rotate the object by 180 degrees around the origin,
  * then the second segment slowly moves it a few units along the z-axis, from where the first segment left off.
  */
- class Animation {
+class Animation {
   constructor(transformNode, segments, looping) {
     //The node that is being animated
     this.transformNode = transformNode;
