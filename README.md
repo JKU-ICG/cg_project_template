@@ -16,7 +16,7 @@ For every submission change/extend the corresponding sections by replacing the *
 | **Student 1** | TODO          | TODO        | TODO           | TODO           |
 | **Student 2** | TODO          | TODO        | TODO           | TODO           |
 
-### Concept Submission due on 26.03.2021
+### Concept Submission due on 01.04.2021
 
 TODO
 
@@ -28,18 +28,18 @@ Selected special effects must add up to exactly 30 points. Replace yes/no with e
 
 | Selected   | ID | Name                                  | Points |
 |------------|----|---------------------------------------|--------|
-| yes/no     | S1 | Multi texturing                       | 10     |  
-| yes/no     | S2 | Level of detail                       | 10     |
-| yes/no     | S3 | Billboarding                          | 10     |
-| yes/no     | S4 | Terrain from heightmap                | 20     |
-| yes/no     | S5 | Postprocessing shader                 | 20     |
-| yes/no     | S6 | Animated water surface                | 20     |
-| yes/no     | S7 | Minimap                               | 20     |
-| yes/no     | S8 | Particle system (rain, smoke, fire)   | 20     |
+| yes/no     | S1 | Multi texturing                       | 15     |  
+| yes/no     | S2 | Level of detail                       | 15     |
+| yes/no     | S3 | Billboarding                          | 15     |
+| yes/no     | S4 | Terrain from heightmap                | 30     |
+| yes/no     | S5 | Postprocessing shader                 | 30     |
+| yes/no     | S6 | Animated water surface                | 30     |
+| yes/no     | S7 | Minimap                               | 30     |
+| yes/no     | S8 | Particle system (rain, smoke, fire)   | 30     |
 | yes/no     | S9 | Motion blur                           | 30     |
 | yes/no     | SO | Own suggestion (preapproved by email) | TODO   |
 
-## Intermediate Submission due on 23.04.2021
+## Intermediate Submission due on 29.04.2021
 
 Prepare a first version of your movie that:
  * is 30 seconds long,
@@ -55,7 +55,7 @@ Nothing to change here in `README` file.
 
 **Note:** You don’t need to use any lighting, materials, or textures yet. This will be discussed in later labs and can be added to the project afterwards!
 
-## Final Submission due on 22.06.2021
+## Final Submission due on 21.06.2021
 
 The repository needs to contain:
   * code/ Documented code + resources + libs
@@ -82,13 +82,14 @@ Mention in the comments column of the table where you have implemented the code 
 | yes/no/partial | 1a | Add at least one manually composed object that consists of multiple scene graph nodes.                 | 6           |                 |
 | yes/no/partial | 1b | Animate separate parts of the composed object and also move the composed object itself in the scene.   | 4           |                 |
 | yes/no/partial | 1c | Use at least two clearly different materials for the composed object.                                  | 3           |                 |
-| yes/no/partial | 2a | Create one scene graph node that renders a complex 3D shape. Fully specify properties for this object. | 7           |                 |
-| yes/no/partial | 2b | Apply a texture to your self-created complex object by setting proper texture coordinates.             | 3           |                 |
-| yes/no/partial | 3a | Use multiple light sources.                                                                            | 5           |                 |
-| yes/no/partial | 3b | One light source should be moving in the scene.                                                        | 3           |                 |
-| yes/no/partial | 3c | Implement at least one spot-light.                                                                     | 8           |                 |
-| yes/no/partial | 3d | Apply Phong shading to all objects in the scene.                                                       | 4           |                 |
-| yes/no/partial | 4  | The camera is animated 30 seconds without user intervention. Animation quality and complexity of the camera and the objects influence the judgement.                                                                       | 7           |                 |
+| yes/no/partial | 1d | Texture parts of your composed object by setting proper texture coordinates.                           | 5           |                 |
+
+| yes/no/partial | 2a | Use multiple light sources.                                                                            | 5           |                 |
+| yes/no/partial | 2b | One light source should be moving in the scene.                                                        | 3           |                 |
+| yes/no/partial | 2c | Implement at least one spot-light.                                                                     | 10          |                 |
+| yes/no/partial | 2d | Apply Phong shading to all objects in the scene.                                                       | 4           |                 |
+
+| yes/no/partial | 3  | The camera is animated 30 seconds without user intervention. Animation quality and complexity of the camera and the objects influence the judgement.                                                                       | 10           |                 |
 | yes/no/partial | Sx | TODO Special Effect Name                                                                               | TODO        |                 |
 | yes/no/partial | Sy | TODO Special Effect Name                                                                               | TODO        |                 |
 | yes/no/partial | SE | Special effects are nicely integrated and well documented                                              | 20          |                 |
