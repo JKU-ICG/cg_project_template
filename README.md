@@ -83,12 +83,10 @@ Mention in the comments column of the table where you have implemented the code 
 | yes/no/partial | 1b | Animate separate parts of the composed object and also move the composed object itself in the scene.   | 4           |                 |
 | yes/no/partial | 1c | Use at least two clearly different materials for the composed object.                                  | 3           |                 |
 | yes/no/partial | 1d | Texture parts of your composed object by setting proper texture coordinates.                           | 5           |                 |
-
 | yes/no/partial | 2a | Use multiple light sources.                                                                            | 5           |                 |
 | yes/no/partial | 2b | One light source should be moving in the scene.                                                        | 3           |                 |
 | yes/no/partial | 2c | Implement at least one spot-light.                                                                     | 10          |                 |
 | yes/no/partial | 2d | Apply Phong shading to all objects in the scene.                                                       | 4           |                 |
-
 | yes/no/partial | 3  | The camera is animated 30 seconds without user intervention. Animation quality and complexity of the camera and the objects influence the judgement.                                                                       | 10           |                 |
 | yes/no/partial | Sx | TODO Special Effect Name                                                                               | TODO        |                 |
 | yes/no/partial | Sy | TODO Special Effect Name                                                                               | TODO        |                 |
