@@ -117,7 +117,7 @@ function createContext(width, height) {
   canvas.height = height || 400;
   document.body.appendChild(canvas);
   createHtmlText(canvas);
-  return canvas.getContext('webgl', { premultipliedAlpha: false, alpha: false });
+  return canvas.getContext('webgl2', { premultipliedAlpha: false, alpha: false });
 }
 
 /**
