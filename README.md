@@ -55,7 +55,7 @@ Nothing to change here in `README` file.
 
 **Note:** You don’t need to use any lighting, materials, or textures yet. This will be discussed in later labs and can be added to the project afterwards!
 
-## Final Submission due on 23.06.2023
+## Final Submission due on 20.06.2023
 
 The repository needs to contain:
   * code/ Documented code + resources + libs
